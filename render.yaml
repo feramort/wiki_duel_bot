@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: wiki-duel-bot
+    env: python
+    region: frankfurt
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: WIKI_LANGUAGE
+        value: ru
+      - key: WIKI_USER_AGENT
+        value: WikiDuelBot/1.0 (https://t.me/WikiDuelBot; contact@example.com)
